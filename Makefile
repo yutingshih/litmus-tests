@@ -1,4 +1,4 @@
-CFLAGS = -std=c11 -Wall
+CFLAGS = -std=c11 -Wall -O0
 LDLIBS = -pthread
 BIN = \
 	message-passing \
