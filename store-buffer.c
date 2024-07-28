@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <pthread.h>
 #include <stdatomic.h>
 
@@ -19,11 +20,16 @@ void *thread2(void *arg)
     return NULL;
 }
 
-int main(void)
+int main(int argc, const char** argv)
 {
     pthread_t t1, t2;
     int iterations = 1000000;
     int count[4] = {0};  // To count occurrences of each outcome
+
+    if (argc >= 2) {
+        long tmp = strtol(argv[1], NULL, 10);
+        if (tmp > 0) iterations = tmp;
+    }
 
     for (int i = 0; i < iterations; i++) {
         x = 0;
